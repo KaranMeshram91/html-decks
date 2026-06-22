@@ -33,6 +33,46 @@ tile, turn this breakdown into a bar chart"). To fulfill it:
 4. Reply: "Live — run `python3 -m http.server` and open the deck; tell me if
    you're happy."
 
+## README → Deck workflow
+
+When the user pastes a README (or any wall of text) and asks "make a deck":
+
+1. **Distill, don't transcribe.** Read the whole thing. Extract:
+   - The one-sentence point (goes on the title slide subtitle)
+   - 2–3 supporting facts or features (bullet slide)
+   - Any numbers worth spotlighting (tile slide)
+   - Any comparisons or distributions (bar chart slide)
+2. **Map to slide types** from the table above: title → tile → bullets → bars → closing.
+3. **Never use the source's headings verbatim** — rewrite each as a punchy ≤5-word statement.
+4. Default slide count: one slide per major concept, typically 5–8 slides total.
+
+## "N slides only" constraint
+
+When the user specifies a slide count (e.g. "make it 4 slides"):
+
+- Title and closing always count as 2. You have N−2 content slides.
+- Rank remaining concepts by impact: most surprising stat > clearest value prop > supporting detail.
+- Keep only the top-ranked concepts. Merge related points into one bullet slide rather than cutting them entirely.
+- If bullets still won't fit, trim to 2 bullets per slide instead of 3.
+- Never pad to hit a count — fewer tight slides beats more thin ones.
+
+## Rich transitions
+
+reveal.js supports `data-transition` and `data-transition-speed` on each `<section>`.
+Values: `none | fade | slide | convex | concave | zoom`. Split enter/exit with a space: `"zoom-in fade-out"`.
+
+Default per slide type:
+
+| Slide type  | `data-transition`    | `data-transition-speed` |
+|-------------|----------------------|-------------------------|
+| Title       | `zoom-in slide-out`  | `slow`                  |
+| Tile        | `fade`               | `default`               |
+| Bullets     | `slide`              | `default`               |
+| Bar chart   | `convex`             | `fast`                  |
+| Closing     | `fade`               | `slow`                  |
+
+Always put these attributes on the `<section>` tag. The global fallback in `deck.js` is `fade`.
+
 ## Run locally
 
 ```

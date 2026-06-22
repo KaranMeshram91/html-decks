@@ -17,7 +17,7 @@
       <!-- ============================================================
            SLIDE TYPE: TITLE
            ============================================================ -->
-      <section data-background-gradient="linear-gradient(135deg, #0b1020 0%, #1a2342 100%)">
+      <section data-background-gradient="linear-gradient(135deg, #0b1020 0%, #1a2342 100%)" data-transition="zoom-in slide-out" data-transition-speed="slow">
         <p class="eyebrow">BrowserStack Webinar</p>
         <h1 class="title">Context Engineering<br />for QA</h1>
         <p class="subtitle">Shipping reliable AI test workflows</p>
@@ -28,7 +28,7 @@
            SLIDE TYPE: BIG-NUMBER TILE
            One headline metric. Use for the number that matters.
            ============================================================ -->
-      <section>
+      <section data-transition="fade">
         <div class="tile">
           <div class="tile-number" data-fragment-index="0">73%</div>
           <div class="tile-label">of flaky tests trace back to missing context, not bad assertions</div>
@@ -39,7 +39,7 @@
            SLIDE TYPE: THREE BULLETS
            Max three. One idea each. Animate in one at a time.
            ============================================================ -->
-      <section>
+      <section data-transition="slide">
         <h2 class="section-head">The shift</h2>
         <ul class="big-bullets">
           <li class="fragment fade-up">Prompts are not the product — <em>context</em> is.</li>
@@ -52,7 +52,7 @@
            SLIDE TYPE: BAR CHART (pure CSS, no library)
            Heights are set with --val (0-100). Animate on reveal.
            ============================================================ -->
-      <section>
+      <section data-transition="convex" data-transition-speed="fast">
         <h2 class="section-head">Where teams spend QA time</h2>
         <div class="bars">
           <div class="bar fragment fade-up" style="--val: 45"><span class="bar-cap">45%</span><span class="bar-label">Repro</span></div>
@@ -65,7 +65,7 @@
       <!-- ============================================================
            SLIDE TYPE: CLOSING
            ============================================================ -->
-      <section data-background-gradient="linear-gradient(135deg, #1a2342 0%, #0b1020 100%)">
+      <section data-background-gradient="linear-gradient(135deg, #1a2342 0%, #0b1020 100%)" data-transition="fade" data-transition-speed="slow">
         <h2 class="title" style="font-size: 2.2em;">Stop fighting the slide editor.</h2>
         <p class="subtitle">Put your decks in a repo. Make them HTML.</p>
         <p class="byline">Thank you — questions?</p>
@@ -74,10 +74,7 @@
     </div>
   </div>
 
-  <!-- Play / autoplay button injected by deck.js -->
-  <button id="play-btn" aria-label="Toggle autoplay">▶ Play</button>
-
-  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
   <script src="js/deck.js"></script>
 </body>
 </html>

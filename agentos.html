@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AgentOS — Enterprise AI Agent Platform</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css" id="base-theme" />
+  <link rel="stylesheet" href="css/theme.css" />
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- ============================================================
+           SLIDE 1: TITLE
+           ============================================================ -->
+      <section data-background-gradient="linear-gradient(135deg, #0b1020 0%, #1a2342 100%)" data-transition="zoom-in slide-out" data-transition-speed="slow">
+        <p class="eyebrow">Open Source · 48k ★ · MIT</p>
+        <h1 class="title">AgentOS</h1>
+        <p class="subtitle">Production-grade multi-agent orchestration — from zero to fleet in minutes</p>
+        <p class="byline">v3.0 · 10M+ tasks/month</p>
+      </section>
+
+      <!-- ============================================================
+           SLIDE 2: BIG NUMBER
+           ============================================================ -->
+      <section data-transition="fade">
+        <div class="tile">
+          <div class="tile-number">1.2s</div>
+          <div class="tile-label">median task latency — from request to result, p50</div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           SLIDE 3: ARCHITECTURE — three layers
+           ============================================================ -->
+      <section data-transition="slide">
+        <h2 class="section-head">Three-layer architecture</h2>
+        <div class="arch">
+
+          <div class="arch-layer fragment fade-up">
+            <div class="arch-layer-label">Control Plane</div>
+            <div class="arch-boxes">
+              <div class="arch-box">Scheduler</div>
+              <div class="arch-box">Router (intent → agent)</div>
+              <div class="arch-box">Policy Engine</div>
+            </div>
+          </div>
+
+          <div class="arch-arrow fragment fade-up">↓</div>
+
+          <div class="arch-layer fragment fade-up">
+            <div class="arch-layer-label">Agent Layer</div>
+            <div class="arch-boxes">
+              <div class="arch-box">CodeAgent</div>
+              <div class="arch-box">DataAgent</div>
+              <div class="arch-box">VoiceAgent</div>
+              <div class="arch-box">SearchAgent</div>
+            </div>
+          </div>
+
+          <div class="arch-arrow fragment fade-up">↓</div>
+
+          <div class="arch-layer fragment fade-up">
+            <div class="arch-layer-label">Memory &amp; Tools</div>
+            <div class="arch-boxes">
+              <div class="arch-box">Short-term (Redis · 1h)</div>
+              <div class="arch-box">Long-term (pgvector)</div>
+              <div class="arch-box">Tool Registry (500+)</div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ============================================================
+           SLIDE 4: FLOW — 6-step execution pipeline
+           ============================================================ -->
+      <section data-transition="convex" data-transition-speed="fast">
+        <h2 class="section-head">Every task, same 6-step pipeline</h2>
+        <div class="flow">
+
+          <div class="flow-step fragment fade-up">
+            <div class="flow-step-num">1</div>
+            <div class="flow-step-body">
+              <div class="flow-step-title">Intake</div>
+              <div class="flow-step-desc">Parse intent · validate auth · assign task ID</div>
+            </div>
+          </div>
+
+          <div class="flow-step fragment fade-up">
+            <div class="flow-step-num">2</div>
+            <div class="flow-step-body">
+              <div class="flow-step-title">Route</div>
+              <div class="flow-step-desc">Embedding similarity + capability manifest → best-fit agent</div>
+            </div>
+          </div>
+
+          <div class="flow-step fragment fade-up">
+            <div class="flow-step-num">3</div>
+            <div class="flow-step-body">
+              <div class="flow-step-title">Context Load</div>
+              <div class="flow-step-desc">Redis short-term + pgvector chunks + tool manifest + org policies</div>
+            </div>
+          </div>
+
+          <div class="flow-step fragment fade-up">
+            <div class="flow-step-num">4</div>
+            <div class="flow-step-body">
+              <div class="flow-step-title">Execute</div>
+              <div class="flow-step-desc">LLM → tool calls in gVisor sandbox → loop until done</div>
+            </div>
+          </div>
+
+          <div class="flow-step fragment fade-up">
+            <div class="flow-step-num">5</div>
+            <div class="flow-step-body">
+              <div class="flow-step-title">Persist &amp; Respond</div>
+              <div class="flow-step-desc">Write to long-term memory · emit logs · update cost ledger · return result</div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ============================================================
+           SLIDE 5: TIMELINE — roadmap
+           ============================================================ -->
+      <section data-transition="slide">
+        <h2 class="section-head">Roadmap</h2>
+        <div class="timeline">
+
+          <div class="tl-item fragment fade-up">
+            <div class="tl-marker"><div class="tl-dot done"></div><div class="tl-line"></div></div>
+            <div class="tl-content">
+              <div><span class="tl-version">v1.0</span><span class="tl-date">Jan 2024</span></div>
+              <div class="tl-title">Foundation</div>
+              <div class="tl-detail">Single-agent engine · 50 tools · Redis memory · REST API</div>
+            </div>
+          </div>
+
+          <div class="tl-item fragment fade-up">
+            <div class="tl-marker"><div class="tl-dot done"></div><div class="tl-line"></div></div>
+            <div class="tl-content">
+              <div><span class="tl-version">v2.0</span><span class="tl-date">Aug 2024</span></div>
+              <div class="tl-title">Multi-Agent</div>
+              <div class="tl-detail">Agent-to-agent messaging · parallel fan-out · cost tracking</div>
+            </div>
+          </div>
+
+          <div class="tl-item fragment fade-up">
+            <div class="tl-marker"><div class="tl-dot done"></div><div class="tl-line"></div></div>
+            <div class="tl-content">
+              <div><span class="tl-version">v3.0</span><span class="tl-date">Mar 2025</span></div>
+              <div class="tl-title">Enterprise</div>
+              <div class="tl-detail">Policy engine · gVisor sandboxes · SOC2 · 99.95% SLA</div>
+            </div>
+          </div>
+
+          <div class="tl-item fragment fade-up">
+            <div class="tl-marker"><div class="tl-dot now"></div><div class="tl-line"></div></div>
+            <div class="tl-content">
+              <div><span class="tl-version">v3.5</span><span class="tl-date">Q3 2025 →</span></div>
+              <div class="tl-title">Intelligence</div>
+              <div class="tl-detail">Adaptive routing · shared memory pools · agent-authored tools</div>
+            </div>
+          </div>
+
+          <div class="tl-item fragment fade-up">
+            <div class="tl-marker"><div class="tl-dot future"></div><div class="tl-line"></div></div>
+            <div class="tl-content">
+              <div><span class="tl-version">v4.0</span><span class="tl-date">Q1 2026</span></div>
+              <div class="tl-title">Autonomy</div>
+              <div class="tl-detail">Self-healing · budget-aware planning · federated cloud + on-prem</div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ============================================================
+           SLIDE 6: COMPARISON TABLE
+           ============================================================ -->
+      <section data-transition="concave">
+        <h2 class="section-head">How we compare</h2>
+        <table class="compare">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>AgentOS</th>
+              <th>LangChain</th>
+              <th>CrewAI</th>
+              <th>AutoGen</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="fragment fade-up">
+              <td class="feature-col">Multi-agent orchestration</td>
+              <td class="yes">✅ Native</td>
+              <td class="part">⚠️ LangGraph</td>
+              <td class="yes">✅ Native</td>
+              <td class="yes">✅ Native</td>
+            </tr>
+            <tr class="fragment fade-up">
+              <td class="feature-col">Persistent memory</td>
+              <td class="yes">✅ pgvector</td>
+              <td class="no">❌ DIY</td>
+              <td class="no">❌ DIY</td>
+              <td class="no">❌ DIY</td>
+            </tr>
+            <tr class="fragment fade-up">
+              <td class="feature-col">Sandboxed tool execution</td>
+              <td class="yes">✅ gVisor</td>
+              <td class="no">❌ No</td>
+              <td class="no">❌ No</td>
+              <td class="part">⚠️ Docker</td>
+            </tr>
+            <tr class="fragment fade-up">
+              <td class="feature-col">Cost tracking per task</td>
+              <td class="yes">✅ Built-in</td>
+              <td class="no">❌ DIY</td>
+              <td class="no">❌ DIY</td>
+              <td class="no">❌ DIY</td>
+            </tr>
+            <tr class="fragment fade-up">
+              <td class="feature-col">SOC2 / audit logs</td>
+              <td class="yes">✅ v3.0+</td>
+              <td class="no">❌ No</td>
+              <td class="no">❌ No</td>
+              <td class="no">❌ No</td>
+            </tr>
+            <tr class="fragment fade-up">
+              <td class="feature-col">Managed cloud</td>
+              <td class="yes">✅ Yes</td>
+              <td class="yes">✅ LangSmith</td>
+              <td class="no">❌ No</td>
+              <td class="no">❌ No</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ============================================================
+           SLIDE 7: LATENCY BAR CHART
+           ============================================================ -->
+      <section data-transition="convex" data-transition-speed="fast">
+        <h2 class="section-head">Where time goes (p50, ms)</h2>
+        <div class="bars">
+          <div class="bar fragment fade-up" style="--val: 67"><span class="bar-cap">800ms</span><span class="bar-label">LLM call</span></div>
+          <div class="bar fragment fade-up" style="--val: 25"><span class="bar-cap">300ms</span><span class="bar-label">Tool exec</span></div>
+          <div class="bar fragment fade-up" style="--val: 4"><span class="bar-cap">45ms</span><span class="bar-label">Context</span></div>
+          <div class="bar fragment fade-up" style="--val: 3"><span class="bar-cap">32ms</span><span class="bar-label">Route+IO</span></div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           SLIDE 8: CLOSING
+           ============================================================ -->
+      <section data-background-gradient="linear-gradient(135deg, #1a2342 0%, #0b1020 100%)" data-transition="fade" data-transition-speed="slow">
+        <h2 class="title" style="font-size: 2em;">Stop managing agents.<br/>Start managing outcomes.</h2>
+        <p class="subtitle">pip install agentos · docs.agentos.dev</p>
+        <p class="byline">Used by Stripe · Notion · GitHub · Moderna</p>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+  <script src="js/deck.js"></script>
+</body>
+</html>

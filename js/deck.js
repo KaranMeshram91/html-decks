@@ -12,9 +12,9 @@ const deck = new Reveal({
   hash: true,          // put slide # in the URL
   controls: true,
   progress: true,
-  transition: 'slide', // none | fade | slide | convex | concave | zoom
-  autoSlide: 0,        // 0 = off; Play button sets this live
-  autoSlideStoppable: true,
+  transition: 'fade',  // fallback; override per-slide with data-transition
+  autoSlide: 0,
+  autoSlideStoppable: false,
 });
 
 deck.initialize().then(() => {
@@ -28,22 +28,7 @@ deck.initialize().then(() => {
     localStorage.setItem(DECK_ID, JSON.stringify({ h: e.indexh, v: e.indexv }));
   });
 
-  // ---- 2. Play / autoplay toggle ----
-  const btn = document.getElementById('play-btn');
-  let playing = false;
-  const SLIDE_MS = 6000; // seconds per slide when autoplaying
-  btn.addEventListener('click', () => {
-    playing = !playing;
-    if (playing) {
-      deck.configure({ autoSlide: SLIDE_MS });
-      btn.textContent = '❚❚ Pause';
-    } else {
-      deck.configure({ autoSlide: 0 });
-      btn.textContent = '▶ Play';
-    }
-  });
-
-  // ---- Bonus: R resets saved position ----
+  // ---- R resets saved position ----
   document.addEventListener('keydown', (ev) => {
     if (ev.key === 'r' || ev.key === 'R') {
       localStorage.removeItem(DECK_ID);
