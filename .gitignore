@@ -1,0 +1,13 @@
+# OS / editor cruft
+.DS_Store
+*.swp
+.vscode/
+.idea/
+
+# Python http.server logs etc.
+__pycache__/
+*.log
+
+# Node (only if you later add a build step)
+node_modules/
+dist/

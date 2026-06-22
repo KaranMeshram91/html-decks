@@ -1,0 +1,110 @@
+/* ============================================================
+   HOUSE STYLE — your visual language lives here.
+   Change these tokens and every deck updates.
+   ============================================================ */
+:root {
+  --bg:        #0b1020;
+  --ink:       #f4f6fb;
+  --muted:     #9aa6c4;
+  --accent:    #5b8cff;   /* primary highlight */
+  --accent-2:  #38e0c4;   /* secondary / charts */
+  --font:      "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+/* Override reveal defaults */
+.reveal {
+  font-family: var(--font);
+  color: var(--ink);
+}
+.reveal .slides section {
+  text-align: left;
+}
+.reveal h1, .reveal h2 { font-weight: 800; letter-spacing: -0.02em; }
+
+/* ---- Title slide ---- */
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.5em;
+  color: var(--accent-2);
+  margin-bottom: 0.4em;
+}
+.title    { font-size: 3em; line-height: 1.05; margin: 0; }
+.subtitle { color: var(--muted); font-size: 1.1em; margin-top: 0.6em; }
+.byline   { color: var(--accent); margin-top: 1.4em; font-weight: 600; }
+
+/* ---- Section heading ---- */
+.section-head {
+  font-size: 1.6em;
+  color: var(--ink);
+  border-left: 6px solid var(--accent);
+  padding-left: 0.5em;
+  margin-bottom: 0.8em;
+}
+
+/* ---- Big-number tile ---- */
+.tile { text-align: center; padding: 0.5em; }
+.tile-number {
+  font-size: 5.5em;
+  font-weight: 900;
+  line-height: 1;
+  background: linear-gradient(120deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.tile-label {
+  color: var(--muted);
+  font-size: 0.9em;
+  max-width: 14ch;
+  margin: 0.6em auto 0;
+}
+
+/* ---- Big bullets ---- */
+.big-bullets { list-style: none; margin: 0; padding: 0; }
+.big-bullets li {
+  font-size: 1.2em;
+  padding: 0.45em 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.big-bullets em { color: var(--accent-2); font-style: normal; }
+
+/* ---- CSS bar chart ---- */
+.bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 1.2em;
+  height: 320px;
+  padding-top: 1em;
+}
+.bar {
+  flex: 1;
+  height: calc(var(--val) * 1%);
+  background: linear-gradient(180deg, var(--accent), var(--accent-2));
+  border-radius: 8px 8px 0 0;
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  min-height: 12px;
+}
+.bar-cap   { position: absolute; top: -1.4em; font-weight: 700; color: var(--ink); }
+.bar-label { position: absolute; bottom: -1.8em; color: var(--muted); font-size: 0.8em; }
+
+/* ---- Play button ---- */
+#play-btn {
+  position: fixed;
+  bottom: 18px;
+  right: 18px;
+  z-index: 50;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 10px 18px;
+  font: 600 14px var(--font);
+  cursor: pointer;
+  opacity: 0.85;
+  transition: opacity 0.2s;
+}
+#play-btn:hover { opacity: 1; }
