@@ -11,3 +11,6 @@ __pycache__/
 # Node (only if you later add a build step)
 node_modules/
 dist/
+
+# Local Claude Code settings
+.claude/settings.local.json

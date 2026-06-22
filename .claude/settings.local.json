@@ -1,8 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Bash(ls -la ~/Downloads | grep -i resume)",
-      "Bash(python3 -V)"
-    ]
-  }
-}
